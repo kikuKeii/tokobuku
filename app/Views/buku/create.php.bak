@@ -1,0 +1,68 @@
+<?= $this->extend('templates/index'); ?>
+
+<?= $this->section('page-content'); ?>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Form Buku Baru</h1>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form class="user" action="/buku/save" method="post">
+                <?= csrf_field(); ?>
+                <div class="form-group">
+                    <input class="form-control form-control-user" type="text" id="judul" placeholder="Judul" name="judul" autofocus value="<?= old('judul'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('judul'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user" type="text" id="tahun" placeholder="Tahun" name="tahun" value="<?= old('tahun'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('tahun'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user <?= ($validation->hasError('penulis')) ? 'is-invalid' : ''; ?>" type="text" id="penulis" placeholder="Penulis" name="penulis" value="<?= old('penulis'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('penulis'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user <?= ($validation->hasError('penerbit')) ? 'is-invalid' : ''; ?>" type="number" id="penerbit" placeholder="Penerbit" name="penerbit" value="<?= old('penerbit'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('penerbit'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user <?= ($validation->hasError('bahasa')) ? 'is-invalid' : ''; ?>" type="number" id="bahasa" placeholder="Bahasa" name="bahasa" value="<?= old('bahasa'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('bahasa'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user <?= ($validation->hasError('jmlhHal')) ? 'is-invalid' : ''; ?>" type="number" id="jmlhHal" placeholder="Jumlah Ha" name="jmlhHal" value="<?= old('jmlhHal'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('jmlhHal'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user <?= ($validation->hasError('sinopsis')) ? 'is-invalid' : ''; ?>" type="number" id="sinopsis" placeholder="sinopsis" name="sinopsis" value="<?= old('sinopsis'); ?>">
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $validation->getError('sinopsis'); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-user" type="text" id="img" placeholder="Sampul" name="sampul" value="<?= old('sampul'); ?>">
+
+                </div>
+                <button class="btn btn-primary btn-block text-white btn-user" type="submit" value="1">Submit Buku</button>
+                <hr>
+
+                <hr>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
