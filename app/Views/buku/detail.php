@@ -81,7 +81,7 @@
                 <p class="description"><?= $buku['sinopsis']; ?></p>
 
                 <p class="description"></p>
-                <table class="description">
+                <table class="table table-striped">
                     <tr>
                         <td>Penerbit</td>
                         <td>:</td>
@@ -114,9 +114,10 @@
                     </tr>
 
                 </table>
-
-                <a href="/transaksi/beli/<?= $buku['id']; ?>" class="btn-buy-now"> Buy Now </a>
-
+                <br>
+                <?php if (in_groups('user')) : ?>
+                    <a href="/transaksi/beli/<?= $buku['id']; ?>" class="btn-buy-now"> <?= "Beli Sekarang <br> Rp. " . number_format($buku['harga'], 2, ',', '.'); ?> </a>
+                <?php endif; ?>
             </div>
 
             <img class="book-picture" src="/img/buku/<?php if ($buku['sampul'] == "") {

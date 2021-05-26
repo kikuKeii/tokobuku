@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-code"></i>
+            <i class="fas fa-book"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Toko Buku <sup>2</sup></div>
     </a>
@@ -12,13 +12,13 @@
     <hr class="sidebar-divider">
     <?php if (in_groups('admin')) : ?>
         <div class="sidebar-heading">
-            User Management
+            Admin Panel
         </div>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url('admin'); ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>User List</span></a>
+                <span>Dashboard</span></a>
         </li>
 
         <!-- Divider -->

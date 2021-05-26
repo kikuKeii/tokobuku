@@ -36,12 +36,16 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'User::index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
-$routes->get('/tarsaksi/beli/(:num)', 'Transaksi::beli/$1');
+$routes->get('/transaksi/beli/(:num)', 'Transaksi::beli/$1');
+$routes->get('/transaksi/view/(:num)', 'Transaksi::view/$1');
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/buku/create', 'Buku::create', ['filter' => 'role:admin']);
 $routes->get('/buku/edit/(:segment)', 'Buku::edit/$1', ['filter' => 'role:admin']);
 $routes->delete('/buku/(:num)', 'Buku::delete/$1');
 $routes->get('/buku/(:any)', 'Buku::detail/$1');
+$routes->get('/user/edit/(:num)', 'User::edit/$1');
+
+
 
 
 

@@ -18,4 +18,9 @@ class BukuModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
+    public function search($keyword)
+    {
+        // return $this->table('buku')->like('judul', $keyword)->orLike('penulis', $keyword)->orLike('tahun', $keyword);
+        return $this->table('buku')->like('judul', $keyword)->orLike('penulis', $keyword)->orLike('tahun', $keyword);
+    }
 }

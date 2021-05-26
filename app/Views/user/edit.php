@@ -118,7 +118,7 @@
     <h1 class="h3 mb-4 text-gray-800">Profile</h1>
     <div class="card shadow mb-4">
         <div class="container emp-profile">
-            <form method="post" action="/user/edit/<?= user()->id; ?>">
+            <form method="post" action="/user/update/<?= user()->id; ?>">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -162,59 +162,55 @@
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <label>User ID</label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <p><?= user()->userid; ?></p>
+                                    <div class="col-md-9 mb-2">
+                                        <p><?= user()->id; ?></p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <label>Username</label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <p><?= user()->username; ?></p>
+                                    <div class="col-md-9 mb-2">
+                                        <input type="text" name="username" class="form-control" placeholder="username" value="<?= (old('username')) ? old('username') : $user['username']; ?>">
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <?php if (user()->fullname) : ?>
-                                        <div class="col-md-6">
-                                            <label>Full Name</label>
-                                        </div>
 
-                                        <div class="col-md-6">
-                                            <p><?= user()->fullname; ?></p>
-                                        </div>
-                                    <?php endif; ?>
+                                    <div class="col-md-3">
+                                        <label>Full Name</label>
+                                    </div>
+
+                                    <div class="col-md-9 mb-2">
+                                        <input type="text" name="fullname" class="form-control" placeholder="fullname" value="<?= (old('fullname')) ? old('fullname') : $user['fullname']; ?>">
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <label>Email</label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <p><?= user()->email; ?></p>
+                                    <div class="col-md-9 mb-2">
+                                        <input type="text" name="email" class="form-control" value="<?= user()->email; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <?php if (user()->telp) : ?>
-                                        <div class="col-md-6">
-                                            <label>Phone</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p><?= user()->telp; ?></p>
-                                        </div>
-                                    <?php endif; ?>
+                                    <div class="col-md-3">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-9 mb-2">
+                                        <input type="text" name="telp" class="form-control" placeholder="Telepon" value="<?= (old('telp')) ? old('telp') : $user['telp']; ?>">
+                                    </div>
                                 </div>
-
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <label>-</label>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-9 mb-2">
                                         <p>-</p>
                                     </div>
                                 </div>

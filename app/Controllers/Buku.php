@@ -18,10 +18,20 @@ class Buku extends BaseController
     }
     public function index()
     {
+        $currentPage = $this->request->getVar('page_buku') ? $this->request->getVar('page_buku') : 1;
+        $keyword = $this->request->getVar('keyword');
+
+        if ($keyword) {
+            $bukuS = $this->bukuModel->search($keyword);
+        } else {
+            $bukuS = $this->bukuModel;
+        }
+
         $data = [
             'title' => 'Buku',
-            'buku' => $this->bukuModel->paginate(10, 'buku'),
-            'pager' => $this->bukuModel->pager
+            'buku' => $bukuS->paginate(6, 'buku'),
+            'pager' => $this->bukuModel->pager,
+            'currentPage' => $currentPage
         ];
         return view('buku/index', $data);
     }

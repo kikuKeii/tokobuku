@@ -55,6 +55,7 @@ $submit = [
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <?= $validation->listErrors() ?>
     <h3 class="text-dark mb-4 mt-4">Beli</h3>
     <p><?= user()->id; ?> and <?= $buku['id']; ?></p>
     <div class="card shadow">
@@ -79,7 +80,7 @@ $submit = [
                         <div class="form-group">
                             <label for="provinsi">Pilih Provinsi</label>
                             <select class="form-control" id="provinsi">
-                                <option value="">Select Service</option>
+                                <option value="">Select Provinsi</option>
                                 <?php foreach ($provinsi as $p) : ?>
                                     <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
                                 <?php endforeach; ?>
@@ -88,7 +89,7 @@ $submit = [
                         <div class="form-group">
                             <label for="kabupaten">Pilih Kabupaten</label>
                             <select class="form-control" id="kabupaten">
-                                <option value="">Select Service</option>
+                                <option value="">Select Kabupaten</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -99,9 +100,11 @@ $submit = [
                         </div>
                         <strong>Estimasi : <span id="estimasi"></span></strong>
                         <hr>
-                        <?= form_open('Transaksi/beli') ?>
+                        <?= form_open('/transaksi/updateBeli') ?>
                         <input type="hidden" name="id_user" id="id_user" value="<?= user()->id; ?>">
                         <input type="hidden" name="id_buku" id="id_buku" value="<?= $buku['id']; ?>">
+                        <input type="hidden" name="status" id="status" value="0">
+                        <input type="hidden" name="stok" value="<?= $buku['jumlah']; ?>">
                         <div class="form-group">
                             <?= form_label('Jumblah Pembelian', 'jumlah pembelian') ?>
                             <?= form_input($jumlah) ?>
@@ -131,6 +134,9 @@ $submit = [
 <?= $this->section('script'); ?>
 <script>
     $('document').ready(function() {
+        var jumlah = 1;
+        var harga = <?= $buku['harga']; ?>;
+        var ongkir = 0;
         $("#provinsi").on('change', function() {
             $("#kabupaten").empty();
             var id_province = $(this).val();
@@ -155,6 +161,7 @@ $submit = [
         });
 
         $("#kabupaten").on('change', function() {
+            $("#service").empty();
             var id_city = $(this).val();
             $.ajax({
                 url: "<?= base_url('transaksi/getcost') ?>",
@@ -168,9 +175,34 @@ $submit = [
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
+                    var results = data["rajaongkir"]["results"][0]["costs"];
+                    for (var i = 0; i < results.length; i++) {
+                        var text = results[i]["description"] + "(" + results[i]["service"] + ")";
+                        $("#service").append($('<option>', {
+                            value: results[i]["cost"][0]["value"],
+                            text: text,
+                            etd: results[i]["cost"][0]["etd"]
+                        }));
+                    }
                 },
             });
-        })
+        });
+
+        $("#service").on('change', function() {
+            var estimasi = $('option:selected', this).attr('etd');
+            ongkir = parseInt($(this).val());
+            $("#ongkir").val(ongkir);
+            $("#estimasi").html(estimasi + " Hari");
+            var total = (jumlah * harga) + ongkir;
+            $("#total").val(total);
+        });
+
+        $("#jumlah").on('change', function() {
+            $("#total").empty();
+            jumlah = $("#jumlah").val();
+            var total = (jumlah * harga) + ongkir;
+            $("#total").val(total);
+        });
     });
 </script>
 <?= $this->endSection(); ?>
