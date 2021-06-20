@@ -148,9 +148,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Delete" />
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -185,7 +183,7 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <p><?= user()->fullname; ?></p>
+                                            <p><?= $user->fullname; ?></p>
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -194,7 +192,7 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><?= user()->email; ?></p>
+                                        <p><?= $user->email; ?></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -203,7 +201,7 @@
                                             <label>Phone</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><?= user()->telp; ?></p>
+                                            <p><?= $user->telp; ?></p>
                                         </div>
                                     <?php endif; ?>
                                 </div>

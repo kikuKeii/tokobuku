@@ -50,9 +50,11 @@
                         <?php foreach ($transaksi as $t) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?php if (in_groups('user')) : "<img src=" . "<?= base_url('img/buku/' . $t->sampul); ?>" . " width=" . "180px" . ">";
-                                    endif ?><a href="<?= base_url('admin/' . $t->id_user); ?>"><?php if (in_groups('admin')) : echo $t->username;
-                                                                                                endif ?></a></td>
+                                <td><?php if (in_groups('user')) : ?>
+                                        <img src="/img/buku/<?= $t->sampul; ?>" width="180px" alt="">
+                                    <?php endif ?><a href="<?= base_url('admin/' . $t->id_user); ?>"><?php if (in_groups('admin')) : echo $t->username;
+                                                                                                        endif ?></a>
+                                </td>
                                 <td><a href="<?= base_url('buku/' . $t->slug); ?>"><?= $t->judul; ?></a></td>
                                 <td><?= $t->jumBel; ?></td>
                                 <td><?= $t->ongkir; ?></td>

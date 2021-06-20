@@ -8,7 +8,23 @@
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-5 d-none d-lg-block">
+
+                    <marquee behavior="" direction="left" style="padding: 100px; font-size: 25pt;">
+                        "Makin aku banyak membaca, makin aku banyak berpikir makin aku banyak belajar, makin aku sadar bahwa aku tak mengetahui apa pun." - Voltaire ||
+
+                        "Kamu calon konglomerat ya? kamu harus rajin belajar dan membaca, tapi jangan ditelan sendiri. Berbagilah dengan teman-teman yang tak dapat pendidikan." - Wiji Thukul ||
+
+                        "Ilmu itu ada di mana-mana, pengetahuan di mana-mana tersebar, kalau kita bersedia membaca, dan bersedia mendengar." - Felix Siauw ||
+
+                        "Kalau engkau hanya membaca buku yang dibaca semua orang, engkau hanya bisa berpikir sama seperti semua orang." - Haruki Murakami ||
+
+                        "Ada dua motif untuk membaca buku. Pertama, kau menikmatinya dan yang lain, kau bisa menyombongkannya." - Bertrand Russell ||
+
+                        "Saya membaca buku dan berbicara dengan orang lain. Maksud saya, itulah cara seseorang belajar sesuatu. Ada banyak buku bagus di luar sana dan ada banyak orang pintar." - Elon Musk ||
+
+                    </marquee>
+                </div>
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">

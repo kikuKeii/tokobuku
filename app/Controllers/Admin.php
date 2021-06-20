@@ -52,11 +52,12 @@ class Admin extends BaseController
         $query = $this->builder->get();
         $data = [
             'title' => 'Detail User',
-            'user' => $query->getRow(),
+            'useri' => $query->getRow(),
         ];
         if (empty($data['user'])) {
             return redirect()->to('/admin');
         }
+        // dd($data);
         return view('admin/userdetail', $data);
     }
 }

@@ -46,7 +46,7 @@ class Transaksi extends BaseController
         $this->builder->select('transaksi.id as tid, id_user, id_buku, total, alamat, ongkir, transaksi.jumlah as jumBel, transaksi.status as sss, username, telp, fullname, sampul, judul, penulis, sinopsis, penerbit, tahun, bahasa, jmlhHal, transaksi.created_at as updat');
         $this->builder->join('users', 'users.id = id_user',);
         $this->builder->join('buku', 'buku.id = id_buku');
-        if (!in_groups('admin')) {
+        if (in_groups('admin')) {
             $this->builder->where('transaksi.id', $id);
         }
 
@@ -56,6 +56,7 @@ class Transaksi extends BaseController
             't' => $query->getRow()
         ];
         // dd($data);
+
         return view('transaksi/view', $data);
     }
     public function invoice($id)
@@ -157,8 +158,24 @@ class Transaksi extends BaseController
             'status' => $this->request->getVar('status'),
 
         ]);
-
         session()->setFlashdata('pesan', 'Data Berhasil ditambhakan.');
+        return redirect()->to('/transaksi/');
+    }
+    public function update($id)
+    {
+        $this->transakiModel->save([
+            'id' => $id,
+            'id_user' => $this->request->getVar('id_user'),
+            'id_buku' => $this->request->getVar('id_buku'),
+            'jumlah' => $this->request->getVar('jumlah'),
+            'total' => $this->request->getVar('total'),
+            'created_by' => $this->request->getVar('id_user'),
+            'updated_by' => $this->request->getVar('id_user'),
+            'alamat' => $this->request->getVar('alamat'),
+            'ongkir' => $this->request->getVar('ongkir'),
+            'status' => $this->request->getVar('status'),
+
+        ]);
         return redirect()->to('/transaksi/');
     }
     public function getCity()

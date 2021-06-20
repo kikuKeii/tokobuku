@@ -38,6 +38,7 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/transaksi/beli/(:num)', 'Transaksi::beli/$1');
 $routes->get('/transaksi/view/(:num)', 'Transaksi::view/$1');
+$routes->get('/transaksi/update/(:num)', 'Transaksi::update/$1');
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/buku/create', 'Buku::create', ['filter' => 'role:admin']);
 $routes->get('/buku/edit/(:segment)', 'Buku::edit/$1', ['filter' => 'role:admin']);

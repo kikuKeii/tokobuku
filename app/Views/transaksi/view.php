@@ -75,6 +75,32 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">View Pemesanan <?= $t->tid; ?></h1>
+                    <?php if (in_groups('admin')) : ?>
+                        <div class="row">
+                            <div class="col-3">
+                                <form action="<?= base_url('transaksi/update/' . $t->tid); ?>" method="post">
+                                    <input type="hidden" name="id_user" id="id_user" value="<?= $t->id_user; ?>">
+                                    <input type="hidden" name="id_buku" id="id_buku" value="<?= $t->id_buku; ?>">
+                                    <input type="hidden" name="jumlah" value="<?= $t->jumBel; ?>">
+                                    <input type="hidden" name="total" value="<?= $t->total; ?>">
+                                    <input type="hidden" name="alamat" value="<?= $t->alamat; ?>">
+                                    <input type="hidden" name="ongkir" value="<?= $t->ongkir; ?>">
+
+
+                                    <select class="form-control" id="kabupaten" name="status">
+                                        <option value="0" name="status">Proses</option>
+                                        <option value="1" name="status">Dikirim</option>
+                                        <option value="2" name="status">Sampai</option>
+                                    </select>
+                                    <input type="submit" value="Update" class="btn btn-success mt-2">
+                                </form>
+                            </div>
+
+                        </div>
+
+
+
+                    <?php endif; ?>
                     <div class="container">
 
                         <div class="color-box">
@@ -115,8 +141,9 @@
                                 <p class="description"><?= $t->fullname . " - " . $t->alamat . ". <br>" . $t->telp; ?></p>
                                 <p class="description">Pemesanan pada <?= $t->updat; ?> oleh <b><?= $t->fullname; ?></b> dengan username "<b><?= $t->username; ?></b>" dan ID pemesanan : <?= $t->tid; ?> sedang diproses.</p>
 
-
-                                <a href="<?= base_url('transaksi/invoice/' . $t->tid); ?>" class="btn-buy-now"> Print Invoice</a>
+                                <?php if (in_groups('user')) : ?>
+                                    <a href="<?= base_url('transaksi/invoice/' . $t->tid); ?>" class="btn-buy-now"> Print Invoice</a>
+                                <?php endif; ?>
 
                             </div>
 
